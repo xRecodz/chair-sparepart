@@ -9,6 +9,10 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+
+  experimental: {
+    nodeMiddleware: true, // <--- tambahkan baris ini
+  },
 }
 
 export default nextConfig

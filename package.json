@@ -49,6 +49,7 @@
     "geist": "latest",
     "input-otp": "1.4.1",
     "jose": "latest",
+    "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.454.0",
     "mongoose": "latest",
     "next": "15.2.4",
@@ -67,6 +68,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.9",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
