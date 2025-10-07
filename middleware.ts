@@ -1,3 +1,5 @@
+export const runtime = "nodejs"
+
 import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
 import { verifyToken } from "@/lib/auth"
@@ -5,7 +7,6 @@ import { verifyToken } from "@/lib/auth"
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
-  // Protect admin dashboard routes
   if (pathname.startsWith("/admin/dashboard")) {
     const token = request.cookies.get("adminToken")?.value
 
