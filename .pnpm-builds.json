@@ -1,3 +1,7 @@
-onlyBuiltDependencies:
-  - '@tailwindcss/oxide'
-  - sharp
+{
+    "onlyBuiltDependencies": [
+      "@tailwindcss/oxide",
+      "sharp"
+    ]
+  }
+  
