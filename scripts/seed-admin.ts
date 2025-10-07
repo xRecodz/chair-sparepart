@@ -1,46 +1,40 @@
-import bcrypt from "bcryptjs"
+import dotenv from "dotenv";
+dotenv.config({ path: ".env.local" });
 
-// This script creates a default admin user
-// Username: admin
-// Password: admin123
+import bcrypt from "bcryptjs";
 
-const MONGODB_URI = process.env.MONGODB_URI
+const MONGODB_URI = process.env.MONGODB_URI;
 
 if (!MONGODB_URI) {
-  console.error("Please define MONGODB_URI environment variable")
-  process.exit(1)
+  console.error("Please define MONGODB_URI environment variable");
+  process.exit(1);
 }
 
 async function seedAdmin() {
-  const mongoose = await import("mongoose")
+  const mongoose = await import("mongoose");
+  await mongoose.connect(MONGODB_URI);
 
-  await mongoose.connect(MONGODB_URI)
+  const Admin = (await import("../models/Admin")).default;
 
-  const Admin = (await import("../models/Admin")).default
-
-  // Check if admin already exists
-  const existingAdmin = await Admin.findOne({ username: "admin" })
-
+  const existingAdmin = await Admin.findOne({ username: "admin" });
   if (existingAdmin) {
-    console.log("Admin user already exists")
-    await mongoose.disconnect()
-    return
+    console.log("Admin user already exists");
+    await mongoose.disconnect();
+    return;
   }
 
-  // Hash password
-  const hashedPassword = await bcrypt.hash("admin123", 10)
+  const hashedPassword = await bcrypt.hash("SokarajA55!", 10);
 
-  // Create admin
   await Admin.create({
     username: "admin",
     password: hashedPassword,
-  })
+  });
 
-  console.log("Admin user created successfully")
-  console.log("Username: admin")
-  console.log("Password: admin123")
+  console.log("✅ Admin user created successfully");
+  console.log("Username: admin");
+  console.log("Password: SokarajA55!");
 
-  await mongoose.disconnect()
+  await mongoose.disconnect();
 }
 
-seedAdmin()
+seedAdmin();
