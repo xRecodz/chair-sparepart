@@ -9,10 +9,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  reactStrictMode: true,
+};
 
-  experimental: {
-    nodeMiddleware: true, // <--- tambahkan baris ini
-  },
-}
-
-export default nextConfig
+export default nextConfig;
